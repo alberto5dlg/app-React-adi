@@ -5,6 +5,7 @@ var app = express();
 app.use(bodyParser.json());
 module.exports = app;
 
+
 //Declaracion de variables segun la ruta
 var usuario = require('./routes/usuario');
 var noticia = require('./routes/noticia');
@@ -16,9 +17,7 @@ app.use('/api/usuarios', usuario);
 app.use('/api/noticias', noticia);
 
 //Ruta generica del Server
-app.get('/',function(pet, res) { 
-	res.send("Api REST para ADI: ");
-});
+app.use('/', express.static('web'));
 
 //Conexion
 app.set('port', (process.env.PORT || 5000));
