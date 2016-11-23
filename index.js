@@ -18,6 +18,8 @@ app.use('/api/noticias', noticia);
 
 //Ruta generica del Server
 app.use('/', express.static('web'));
+//Ruta para mostrar la documentacion del API
+app.use('/api/documentation', express.static('documentation/api'));
 
 //Conexion
 app.set('port', (process.env.PORT || 5000));
