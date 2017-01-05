@@ -1,10 +1,19 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var db = require('./db');
+var webpack = require('webpack');
+var config = require('./webpack.config');
+var path = require('path');
+
 var app = express();
 app.use(bodyParser.json());
 module.exports = app;
 
+var compiler = webpack(config);
+app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+}));
 
 //Declaracion de variables segun la ruta
 var usuario = require('./routes/usuario');
@@ -16,10 +25,15 @@ app.use('/api/comentarios', comentario);
 app.use('/api/usuarios', usuario);
 app.use('/api/noticias', noticia);
 
-//Ruta generica del Server
-app.use('/', express.static('web'));
+
 //Ruta para mostrar la documentacion del API
 app.use('/api/documentation', express.static('documentation/api'));
+//Cargar Bootstrap
+app.use('/css', express.static(__dirname + '/src/css'));
+//Ruta Generica del Servidor
+app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname, 'src/views/index.html'));
+});
 
 //Conexion
 app.set('port', (process.env.PORT || 5000));
@@ -30,6 +44,9 @@ app.listen(app.get('port'), function() {
 
 //Conectamos con la Base de Datos
 db.start();
+
+
+
 
 
 
