@@ -8,8 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "watch": "watchify components/build/main.js  -o components/build/bundle.js -d -v -t [ babelify --presets [es2015 react ] ]"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
