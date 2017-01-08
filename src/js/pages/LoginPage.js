@@ -38,15 +38,14 @@ export default class LoginPage extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="container ">
 
-                <div className="text-center">
-                    <h1>Formulario de Login</h1>
-                </div>
+                <h2 className="text-center">Formulario de Login</h2>
+                <hr />
 
                 <div className="col-md-4"></div>
 
-                <div className=" row col-md-4 jumbotron">
+                <div className=" row col-md-4 jumbotron ">
 
                     <label className="control-label">Login:</label>
                     <input className="form-control" type="text" placeholder="Nombre"
