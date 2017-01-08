@@ -19,7 +19,7 @@ export default class LoginPage extends React.Component {
         if (localStorage.loggedIn) {
             this.context.router.push('/');
         } else {
-            this.context.router.push('/iucebui');
+            this.context.router.push('/login');
         }
     };
 
@@ -46,7 +46,7 @@ export default class LoginPage extends React.Component {
 
                 <div className="col-md-4"></div>
 
-                <div className=" row col-md-4 ">
+                <div className=" row col-md-4 jumbotron">
 
                     <label className="control-label">Login:</label>
                     <input className="form-control" type="text" placeholder="Nombre"
