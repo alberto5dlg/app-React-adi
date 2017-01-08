@@ -12,8 +12,21 @@ exports.isAdmin = function (pet, res) {
 	 	}
 	 	return false;
 	 }
-}
+};
 
+exports.getLogIn = function (username, password){
+	if(username === 'admin' && password === '123456') {
+		localStorage.username = username;
+		localStorage.password = password;
+		localStorage.loggedIn = true;
+    }
+};
+
+exports.getLogOut = function() {
+    delete localStorage.username;
+    delete localStorage.password;
+    delete localStorage.loggedIn;
+};
 
 function getLoginAndPass(auth) {
 	const base64 = auth.substr('Basic'.length);
