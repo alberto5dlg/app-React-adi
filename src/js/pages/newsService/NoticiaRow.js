@@ -4,7 +4,7 @@ export default class NoticiaRow extends React.Component{
 
     render(){
         return (
-            <li>
+            <li className="list-group-item " >
                 {this.props.titular}
             </li>
         );

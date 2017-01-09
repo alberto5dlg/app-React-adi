@@ -4,9 +4,8 @@ import NoticiaRow from './NoticiaRow';
 export default class NewsList extends React.Component {
 
     render(){
-        console.log(this.props.listado);
         return (
-            <ol className="lead">
+            <ul className="list-group">
                 {this.props.listado.map(function(noticia){
                     return (<NoticiaRow
                         key={noticia.noticiaID}
@@ -16,7 +15,7 @@ export default class NewsList extends React.Component {
                         fecha = {noticia.fecha}
                     />)
                 })}
-            </ol>
+            </ul>
         )
     }
 }
