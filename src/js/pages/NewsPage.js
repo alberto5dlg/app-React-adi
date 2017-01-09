@@ -41,6 +41,7 @@ export default class NewsPage extends React.Component {
             this.state.pag--;
         this.loadNews(this.state.pag);
         this.context.router.push('/noticias');
+        console.log(this.state.pag);
     };
 
 

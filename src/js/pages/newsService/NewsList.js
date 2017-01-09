@@ -13,6 +13,7 @@ export default class NewsList extends React.Component {
                         autor = {noticia.autor}
                         cuerpo = {noticia.cuerpoNoticia}
                         fecha = {noticia.fecha}
+                        noticiaID={noticia.noticiaID}
                     />)
                 })}
             </ul>
