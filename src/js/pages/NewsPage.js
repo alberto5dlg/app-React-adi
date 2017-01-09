@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import NewsList from './NewsList';
+import NewsList from './newsService/NewsList';
 
 export default class NewsPage extends React.Component {
 
