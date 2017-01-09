@@ -1,27 +1,26 @@
 import React, { PropTypes } from 'react';
-import {NewsList} from '../NewsServices/NewsList';
+import NewsList from './NewsList';
 
 export default class NewsPage extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.state = {noticias:[]};
+    state = {
+        noticias: [],
     }
 
-    componentWillMount(){
+    loadNews(){
         fetch('http://localhost:5000/api/noticias')
             .then((response) => {
                 return response.json();
             })
             .then((datos) => {
-                this.setState({noticias: datos})
-            })
-
+                this.setState({noticias: datos.data})
+            });
     }
 
 
     render() {
-        if(this.state.noticias.length > 0){
+        this.loadNews();
+        if(!this.state.noticias.isEmpty){
             return(
                 <div className="container">
                     <h2 className="text-center">Listado de Noticias</h2>
@@ -38,7 +37,7 @@ export default class NewsPage extends React.Component {
                     <hr />
                     <div className="jumbotron">
                         <ol className="lead">
-                            <p> Cargando noticias ... </p>
+                            <p> No hay noticias ... </p>
                         </ol>
                     </div>
                 </div>
