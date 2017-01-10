@@ -1,5 +1,5 @@
 import React from 'react';
-import NewsAPI from './NewsAPI';
+import { Link } from 'react-router';
 
 export default class NewsDetails extends React.Component {
 
@@ -33,7 +33,9 @@ export default class NewsDetails extends React.Component {
                     <span className="col-md-8 text-left"><strong>{this.state.documento.autor}</strong></span>
                     <span className="col-md-4 text-right ">{this.state.documento.fecha}</span>
                 </div>
-
+                <div className="text-center">
+                    <Link to="/noticias">Volver a Noticias</Link>
+                </div>
             </div>
         )
     }
