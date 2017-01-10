@@ -10,7 +10,6 @@ export default class NewsPage extends React.Component {
 
     state = {
         noticias: [],
-        datos: undefined,
         pag: 0,
     };
 
@@ -20,10 +19,10 @@ export default class NewsPage extends React.Component {
                 return response.json();
             })
             .then((datos) => {
-                this.setState({noticias: datos.data,
-                                datos: datos})
+                this.setState({noticias: datos.data})
             });
     }
+
     componentDidMount() {
         this.loadNews(this.state.pag);
     }
@@ -41,7 +40,6 @@ export default class NewsPage extends React.Component {
             this.state.pag--;
         this.loadNews(this.state.pag);
         this.context.router.push('/noticias');
-        console.log(this.state.pag);
     };
 
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import NewsAPI from './NewsAPI';
+import { Link } from 'react-router';
+
 
 export default class NoticiaRow extends React.Component{
 
@@ -13,6 +15,8 @@ export default class NoticiaRow extends React.Component{
         this.context.router.push('/');
     };
 
+
+
     render(){
         var remove,edit;
         if(localStorage.loggedIn) {
@@ -20,13 +24,23 @@ export default class NoticiaRow extends React.Component{
             edit = (<a className="badge glyphicon glyphicon-edit"> </a>);
         }
         return (
-            <li className="list-group-item " >
-                 {this.props.titular}
-                {remove}
-                {edit}
-                <a className="badge glyphicon glyphicon-eye-open"> </a>
-
-            </li>
+            <tr>
+                <td>
+                    {this.props.noticiaID}
+                </td>
+                <td>
+                    <Link to={'/noticias/'+this.props.noticiaID} >
+                        {this.props.titular}
+                    </Link>
+                </td>
+                <td>
+                    {edit}
+                    {remove}
+                    <Link to={'/noticias/'+this.props.noticiaID} >
+                        <a className="badge glyphicon glyphicon-eye-open" > </a>
+                    </Link>
+                </td>
+            </tr>
         );
     }
 }
