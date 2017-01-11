@@ -52,13 +52,15 @@ export default class NewsCreateEdit extends React.Component {
 
     postNews = (event) => {
         event.preventDefault();
-        if(this.state.elemento != undefined)
-            NewsAPI.putNoticia(this.state.elemento.noticiaID,this.state.titular,
-                                this.state.cuerpoNoticia,this.state.elemento.autor);
-        else
-            NewsAPI.postNoticia(this.state.titular,this.state.cuerpoNoticia,localStorage.username);
-        this.context.router.push('/noticias/'+this.state.elemento.noticiaID);
-
+        if(this.props.params.id != undefined) {
+            NewsAPI.putNoticia(this.state.elemento.noticiaID, this.state.titular,
+                this.state.cuerpoNoticia, this.state.elemento.autor);
+            this.context.router.push('/noticias/' + this.state.elemento.noticiaID);
+        }
+        else {
+            NewsAPI.postNoticia(this.state.titular, this.state.cuerpoNoticia, localStorage.username);
+            this.context.router.push('/noticias');
+        }
     };
 
     render() {
