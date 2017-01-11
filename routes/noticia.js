@@ -7,7 +7,8 @@ router.get('/pag/:number', controller.listPage); //Coleccion de todas las notici
 router.post('/nuevo', controller.create); //Añadir una nueva noticia
 router.get('/:id', controller.findById); //Buscar una noticia por su id 
 router.delete('/:id', controller.deleteById); // borrar una noticia por su id 
-router.post('/:id/comentar/:login', controller.commentNews); // Publicar un comentario en una noticia 
+router.post('/:id/comentar/:login', controller.commentNews); // Publicar un comentario en una noticia
+router.put('/:id', controller.updateById); //Actualiza los datos de la Noticia
 
 
 module.exports = router;

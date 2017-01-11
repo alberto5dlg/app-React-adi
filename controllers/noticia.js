@@ -43,6 +43,51 @@ exports.create = function(pet, res) {
 	}
 }
 
+//METODO PUT actualiza los datos de una Noticia
+exports.updateById = function (pet,res) {
+    if(auth.isAdmin(pet, res)){
+        var modNews = new Noticia(pet.body);
+        if(modNews.titular == undefined || modNews.cuerpoNoticia == undefined
+            || modNews.autor == undefined){
+            res.status(400);
+            res.send("Faltan campos para poder editar la noticia.");
+        }
+        else {
+            Noticia.findOne({noticiaID: pet.params.id}, function(err, noticia){
+                if(noticia == undefined){
+                    res.status(404);
+                    res.send("La noticia a modificar no existe.");
+                } else {
+                    noticia.fecha = utils.fechaDeHoy();
+                    noticia.titular = modNews.titular;
+                    noticia.cuerpoNoticia = modNews.cuerpoNoticia;
+                    noticia.autor = modNews.autor;
+                    Noticia.update({noticiaID: noticia.noticiaID}, noticia, function(err) {
+                        if(err) {
+                            console.log(err);
+                            res.status(500);
+                            res.end();
+                        } else {
+                            res.status(204);
+                            res.send(noticia);
+                            res.end();
+                        }
+                    });
+                }
+            });
+        }
+    }
+    else if(!pet.get('authorization')) {
+        res.status(401);
+        res.header('WWW-Authenticate', 'Basic realm="myRealm"');
+        res.end();
+    } else {
+        res.status(403);
+        res.send('No tiene permisos para realizar esta accion');
+        res.end();
+    }
+}
+
 //METODO GET noticia por ID 
 exports.findById = function(pet, res) {
 	Noticia.findOne({noticiaID: pet.params.id}, function(err, noticia) {

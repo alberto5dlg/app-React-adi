@@ -17,8 +17,9 @@ export default class NewsCreateEdit extends React.Component {
     componentWillMount(){
         if(this.props.params.id != undefined) {
             this.loadDetailsNews();
+            this.state.cabecera = (<h2 className="text-center">Editar Noticia</h2>);
         }else {
-            this.formCrear();
+            this.state.cabecera = <h2 className="text-center">Crear Noticia</h2>
         }
     }
 
@@ -43,27 +44,24 @@ export default class NewsCreateEdit extends React.Component {
                 this.context.router.push('/error');
             })
             .then((datos) => {
-                this.setState({elemento: datos.noticia})
+                this.setState({elemento: datos.noticia,
+                                titular: datos.noticia.titular,
+                                cuerpoNoticia: datos.noticia.cuerpoNoticia})
             });
-    }
+    };
 
+    postNews = (event) => {
+        event.preventDefault();
+        if(this.state.elemento != undefined)
+            NewsAPI.putNoticia(this.state.elemento.noticiaID,this.state.titular,
+                                this.state.cuerpoNoticia,this.state.elemento.autor);
+        else
+            NewsAPI.postNoticia(this.state.titular,this.state.cuerpoNoticia,localStorage.username);
+        this.context.router.push('/noticias/'+this.state.elemento.noticiaID);
 
-    formEditar(){
-        this.state.cabecera = (<h2 className="text-center">Editar Noticia</h2>);
-        this.state.titular = this.state.elemento.titular;
-        this.state.cuerpoNoticia = this.state.elemento.cuerpoNoticia;
-
-    }
-
-    formCrear(){
-        this.state.cabecera = <h2 className="text-center">Crear Noticia</h2>
-    }
+    };
 
     render() {
-        if(this.props.params.id != undefined)
-            this.formEditar();
-
-
         return (
             <div className="container">
                 {this.state.cabecera}
@@ -75,12 +73,12 @@ export default class NewsCreateEdit extends React.Component {
 
                     <label className="control-label">Titular:</label>
                     <input className="form-control focus" type="text"
-                           onChange={this.setTitular} value={this.state.titular}
+                           onChange={this.setTitular} id="titularNoticia" value={this.state.titular}
                            placeholder="Titular de la noticia ..."/>
 
                     <label  className="control-label ">Noticia:</label>
-                    <textarea rows="15" className="form-control focus animated" value={this.state.cuerpoNoticia}
-                              type="text" onChange={this.setCuerpo}
+                    <textarea rows="15" id="cuerpoNoticia" className="form-control focus animated"
+                              type="text" onChange={this.setCuerpo} value={this.state.cuerpoNoticia}
                               placeholder="Escriba la descripcion de la noticia ..."/>
 
                     <h6></h6>
