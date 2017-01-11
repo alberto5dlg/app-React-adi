@@ -34,6 +34,7 @@ export default class NewsPage extends React.Component {
         this.context.router.push('/noticias');
 
     };
+
     lastPage = (event) => {
         event.preventDefault();
         if(this.state.pag >0)
@@ -42,6 +43,10 @@ export default class NewsPage extends React.Component {
         this.context.router.push('/noticias');
     };
 
+    redirect = (event) => {
+        event.preventDefault();
+        this.context.router.push('/noticias/nueva');
+    };
 
     render() {
 
@@ -52,11 +57,14 @@ export default class NewsPage extends React.Component {
                     <hr />
                     <div className="jumbotron">
                         <NewsList listado={this.state.noticias} />
-                        <a className="col-md-8 text-left">
+                        <a className="col-md-4 text-left">
                             <Link onClick={this.lastPage} to="/noticias" >
                                 Anterior
                             </Link>
                         </a>
+                        <button className="col-md-4 btn btn-primary" onClick={this.redirect}>
+                                Escribir Noticia
+                        </button>
                         <a className="col-md-4 text-right ">
                             <Link onClick={this.nextPage} to="/noticias" >
                                 Siguiente

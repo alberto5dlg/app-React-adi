@@ -13,7 +13,7 @@ export default class NewsAPI extends React.Component {
             if(response.ok) {
             }
         })
-    }
+    };
 
     static putNoticia(id, titular, cuerpoNoticia, autor){
         fetch('http://localhost:5000/api/noticias/'+id, {
@@ -31,7 +31,23 @@ export default class NewsAPI extends React.Component {
             if(response.ok) {
             }
         })
+    };
 
-    }
+    static postNoticia(titular, cuerpoNoticia, autor){
+        fetch('http://localhost:5000/api/noticias/nuevo', {
+            method:'POST',
+            headers:{
+                'Authorization':'Basic '+ auth.loginPassTob64(localStorage.username, localStorage.password),
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify({
+                "titular":titular,
+                "cuerpoNoticia":cuerpoNoticia,
+                "autor":autor
+            })
+        }).then((response) => {
+            })
+
+    };
 }
 

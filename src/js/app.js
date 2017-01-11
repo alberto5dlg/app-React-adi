@@ -10,7 +10,7 @@ ReactDOM.render(
             <IndexRoute component={IndexPage} />
             <Route path='/login' component={LoginPage}/>
             <Route path='/noticias' component={NewsPage}/>
-            <Route path='/noticias/crear' component={NewsCreateEdit}/>
+            <Route path='/noticias/nueva' component={NewsCreateEdit}/>
             <Route path='/noticias/:id' component={NewsDetails}/>
             <Route path='/noticias/editar/:id' component={NewsCreateEdit}/>
             <Route path='/error' component={NotFoundPage} />
