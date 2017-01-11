@@ -21,7 +21,8 @@ export default class NoticiaRow extends React.Component{
         var remove,edit;
         if(localStorage.loggedIn) {
             remove = (<a className="badge glyphicon glyphicon-trash" onClick={this.removeNews}> </a>);
-            edit = (<a className="badge glyphicon glyphicon-edit"> </a>);
+            edit = (<Link to={'/noticias/editar/'+this.props.noticiaID}>
+                    <a className="badge glyphicon glyphicon-edit"> </a></Link>);
         }
         return (
             <tr>

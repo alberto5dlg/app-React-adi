@@ -3,28 +3,41 @@ import { Link } from 'react-router';
 
 export default class NewsDetails extends React.Component {
 
+    static contextTypes = {
+        router: React.PropTypes.object,
+    };
+
     state ={
         documento:'',
     };
 
-
-
     loadDetailsNews(){
         fetch('http://localhost:5000/api/noticias/'+this.props.params.id)
             .then((response) => {
-                return response.json();
+                if (response.status == 200 )
+                    return response.json();
+                else
+                    this.context.router.push('/error');
             })
             .then((datos) => {
                 this.setState({documento: datos.noticia})
             });
     }
+
     componentDidMount() {
         this.loadDetailsNews();
     }
 
+    componentWillMount(){
+        this.compParam();
+    }
+    compParam(){
+        if(isNaN(this.props.params.id))
+            this.context.router.push('/error');
+    }
 
     render(){
-        return(
+        return (
             <div className="container">
                 <h2 className="text-center">{this.state.documento.titular}</h2>
                 <hr />

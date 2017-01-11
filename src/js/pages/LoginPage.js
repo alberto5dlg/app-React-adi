@@ -48,11 +48,11 @@ export default class LoginPage extends React.Component {
                 <div className=" row col-md-4 jumbotron ">
 
                     <label className="control-label">Login:</label>
-                    <input className="form-control" type="text" placeholder="Nombre"
+                    <input className="form-control focus" type="text" placeholder="Nombre"
                            onChange={this.setUsername} />
 
                     <label  className="control-label">Password:</label>
-                    <input className="form-control" type="password" placeholder="Password"
+                    <input className="form-control focus" type="password" placeholder="Password"
                            onChange={this.setPassword} />
 
                     <h6></h6>
