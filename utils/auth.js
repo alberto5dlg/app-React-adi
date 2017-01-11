@@ -37,3 +37,9 @@ function getLoginAndPass(auth) {
   				password: password};
   	return user;
 }
+
+exports.loginPassTob64 = function(username, password){
+	var text = username +':'+ password;
+	const base64 = btoa(text);
+	return base64;
+}

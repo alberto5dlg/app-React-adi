@@ -32,7 +32,7 @@ export default class IndexPage extends React.Component {
                 <div className="jumbotron">
                     {element}
                     <ol className="lead">
-                        <li><Link to="/register">Registro</Link></li>
+                        <li><Link to="/noticias">Noticias</Link></li>
                         {linkToLog}
                     </ol>
                 </div>

@@ -28,8 +28,6 @@ app.use('/api/noticias', noticia);
 
 //Ruta para mostrar la documentacion del API
 app.use('/api/documentation', express.static('documentation/api'));
-//Cargar Bootstrap
-app.use('/css', express.static(__dirname + '/src/css'));
 //Ruta Generica del Servidor
 app.get('*', function(req, res){
     res.sendFile(path.join(__dirname, 'src/views/index.html'));

@@ -19,7 +19,7 @@ export default class LoginPage extends React.Component {
         if (localStorage.loggedIn) {
             this.context.router.push('/');
         } else {
-            this.context.router.push('/iucebui');
+            this.context.router.push('/login');
         }
     };
 
@@ -38,22 +38,21 @@ export default class LoginPage extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="container ">
 
-                <div className="text-center">
-                    <h1>Formulario de Login</h1>
-                </div>
+                <h2 className="text-center">Formulario de Login</h2>
+                <hr />
 
                 <div className="col-md-4"></div>
 
-                <div className=" row col-md-4 ">
+                <div className=" row col-md-4 jumbotron ">
 
                     <label className="control-label">Login:</label>
-                    <input className="form-control" type="text" placeholder="Nombre"
+                    <input className="form-control focus" type="text" placeholder="Nombre"
                            onChange={this.setUsername} />
 
                     <label  className="control-label">Password:</label>
-                    <input className="form-control" type="password" placeholder="Password"
+                    <input className="form-control focus" type="password" placeholder="Password"
                            onChange={this.setPassword} />
 
                     <h6></h6>
