@@ -15,11 +15,12 @@ export default class Header extends React.Component {
     };
 
     render() {
-        var element;
+        var element,listUsers;
         if (!localStorage.loggedIn){
-            element = (<li><Link to='/login'> Login </Link></li>) ;
+            element = (<li><Link to='/login'> Login </Link></li>);
         } else {
             element = (<li><Link to='/' onClick={this.logout}> Logout </Link></li>)
+            listUsers=  (<li><a href="/usuarios">Usuarios</a></li>);
         }
         return (
             <nav className="navbar navbar-default navbar-static-top">
@@ -30,6 +31,7 @@ export default class Header extends React.Component {
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
                             <li><Link to='/noticias'> Noticias </Link></li>
+                            {listUsers}
                             {element}
                         </ul>
                     </div>
