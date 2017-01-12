@@ -14,11 +14,11 @@ exports.findByLogin = function(pet, res) {
 			var links = utils.getComentUsers(usuario,pet);
 			var response = {
 				usuario,
-				links					
+				links
 			}
 			res.status(200);
 			res.json(response);
-		}	
+		}
 	})
 }
 
@@ -31,22 +31,25 @@ exports.create = function(pet, res) {
 		res.status(400);
 		res.send("Faltan campos para poder crear el usuario.");
 	} 
-	else {	
-		usuario.save(function(err, newUsuario) {
-			if(err){
-				res.status(400);
-				res.send("No se puede crear el usuario, algun campo es incorrecto");
-			} else {
-				res.status(201);
-	        	res.header('Location','http://'+utils.getHostname(pet)+'/api/usuarios/'+ newUsuario.login);
-				res.send(newUsuario);
-			}
-		});
+	else {
+        Usuario.count({}, function(err,count) {
+        	usuario.userID = count;
+            usuario.save(function (err, newUsuario) {
+                if (err) {
+                    res.status(400);
+                    res.send("No se puede crear el usuario, algun campo es incorrecto");
+                } else {
+                    res.status(201);
+                    res.header('Location', 'http://' + utils.getHostname(pet) + '/api/usuarios/' + newUsuario.login);
+                    res.send(newUsuario);
+                }
+            });
+        })
 	}
 }
 
 
-//METODO DELETE borra un usuario 
+//METODO DELETE borra un usuario
 exports.deleteByLogin = function (pet, res) {
 	if(auth.isAdmin(pet, res)){
 		Usuario.findOne({login: pet.params.login}, function(err, usuario){
