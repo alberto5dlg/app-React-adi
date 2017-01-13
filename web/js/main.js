@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function cargarDatos(){
-    document.getElementById("miComponente").innerHTML = '';
     UserAPI.getAllUsers(nPag)
         .then(function (datos) {
             var listaHTML = tmpl_table(datos.data);
@@ -26,7 +25,7 @@ function cargarDatos(){
 function borrarUsuario(userID) {
     var login = document.getElementById('borrar_'+userID).name;
     UserAPI.deleteUser(login);
-    document.getElementById('row_'+userID).outerHTML = '';
+    location.reload();
 }
 
 function editarUsuario(userID) {
@@ -46,7 +45,7 @@ function modifyUser(userID){
     var login = document.getElementById('login').value;
     var email = document.getElementById('email').value;
     UserAPI.editUser(oldLogin,login,nombre,apellidos,email);
-    cargarDatos();
+    location.reload();
 }
 
 function nextPage(){
