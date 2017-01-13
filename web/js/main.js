@@ -7,6 +7,7 @@ var nPag = 0;
 var tmp_user = handlebars.compile(UsuarioTemplates.templateUsuario);
 var tmpl_table = handlebars.compile(UsuarioTemplates.templateTabla);
 var tmpl_header = handlebars.compile(HeaderTemplates.myNavBar);
+var tmpl_editUser = handlebars.compile(UsuarioTemplates.editForm);
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("myNavBar").innerHTML = tmpl_header();
@@ -14,19 +15,38 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function cargarDatos(){
+    document.getElementById("miComponente").innerHTML = '';
     UserAPI.getAllUsers(nPag)
         .then(function (datos) {
             var listaHTML = tmpl_table(datos.data);
-            document.getElementById("miComponente").innerHTML = listaHTML
+            document.getElementById("miComponente").innerHTML = listaHTML;
         })
 }
 
 function borrarUsuario(userID) {
     var login = document.getElementById('borrar_'+userID).name;
-    console.log(userID);
-    console.log(login);
     UserAPI.deleteUser(login);
     document.getElementById('row_'+userID).outerHTML = '';
+}
+
+function editarUsuario(userID) {
+    var login = document.getElementById('editar_'+userID).name;
+    UserAPI.getByLogin(login)
+        .then(function(datos) {
+            console.log(datos.usuario.apellidos);
+            var editHTML = tmpl_editUser(datos.usuario);
+            document.getElementById("miComponente").innerHTML = editHTML;
+        })
+}
+
+function modifyUser(userID){
+    var oldLogin = document.getElementById('oldLogin').value;
+    var nombre = document.getElementById('nombre').value;
+    var apellidos = document.getElementById('apellidos').value;
+    var login = document.getElementById('login').value;
+    var email = document.getElementById('email').value;
+    UserAPI.editUser(oldLogin,login,nombre,apellidos,email);
+    cargarDatos();
 }
 
 function nextPage(){
@@ -41,6 +61,8 @@ function lastPage(){
     }
 }
 
+window.modifyUser = modifyUser;
+window.editarUsuario = editarUsuario;
 window.nextPage = nextPage;
 window.lastPage = lastPage;
 window.borrarUsuario = borrarUsuario;

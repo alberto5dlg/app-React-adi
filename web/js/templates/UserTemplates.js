@@ -41,5 +41,43 @@ var templateTabla = `
 </div>
         `;
 
+var editForm = `
+<div class="container">
+    <h2 class="text-center">Editar Usuario</h2>
+    <hr />
+
+    <div class="col-md-2"></div>
+
+    <div class=" row col-md-8 jumbotron ">
+
+        <label class="control-label">Nombre:</label>
+        <input class="form-control focus" type="text"
+               id="nombre" value={{nombre}} />
+        
+        <label class="control-label">Apellidos:</label>
+        <input class="form-control focus" type="text"
+               id="apellidos" value={{apellidos}} />
+               
+        <label class="control-label">Email:</label>
+        <input class="form-control focus" type="text"
+               id="email" value={{email}} />
+               
+        <label class="control-label">Login:</label>
+        <input class="form-control focus" type="text" id="login" value={{login}} />
+
+        <h6></h6>
+
+        <div class="form-group text-center">
+            <button class="btn btn-primary" id="boton" type="submit" onclick="javascript:modifyUser({{userID}})">
+                Actualizar
+            </button>
+        </div>
+        <input type="hidden" id="oldLogin" value="{{login}}">
+
+    </div>
+</div>
+`
+
 exports.templateUsuario = templateUsuario;
 exports.templateTabla = templateTabla;
+exports.editForm = editForm;

@@ -9,6 +9,15 @@ exports.getAllUsers = function(nPag) {
         })
 };
 
+exports.getByLogin = function(login) {
+    return fetch('http://localhost:5000/api/usuarios/' + login)
+        .then(function(response) {
+            if (response.ok){
+                return response.json();
+            }
+        })
+};
+
 exports.deleteUser = function(login){
     return fetch('http://localhost:5000/api/usuarios/'+ login, {
         method:'DELETE',
@@ -20,8 +29,8 @@ exports.deleteUser = function(login){
     })
 };
 
-exports.editUser = function(login,nombre,apellidos,email){
-    fetch('http://localhost:5000/api/noticias/'+id, {
+exports.editUser = function(oldLogin, login, nombre, apellidos, email){
+    fetch('http://localhost:5000/api/usuarios/' + oldLogin, {
         method:'PUT',
         headers:{
             'Authorization':'Basic '+ auth.loginPassTob64(localStorage.username, localStorage.password),
