@@ -16,11 +16,12 @@ export default class IndexPage extends React.Component {
 
     render() {
 
-        var element,linkToLog,anyadirNoticia;
+        var element,linkToLog,anyadirNoticia,listUsers;
         if(localStorage.loggedIn) {
             element = (<p>Bienvenido {localStorage.username}, que desea hacer</p>);
             linkToLog = (<li><Link onClick={this.logout} to="/">Logout</Link></li>);
-            anyadirNoticia = (<li><Link to="/noticias/nueva">Escribir Noticia</Link></li>)
+            anyadirNoticia = (<li><Link to="/noticias/nueva">Escribir Noticia</Link></li>);
+            listUsers = (<li><a href="/usuarios">Usuarios</a></li>);
         } else {
             element = (<p>Bienvenido Invitado, que desea hacer </p>);
             linkToLog = (<li><Link  to="/login">Login</Link></li>);
@@ -35,6 +36,7 @@ export default class IndexPage extends React.Component {
                     <ol className="lead">
                         <li><Link to="/noticias">Noticias</Link></li>
                         {anyadirNoticia}
+                        {listUsers}
                         {linkToLog}
                     </ol>
                 </div>

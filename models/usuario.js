@@ -6,7 +6,8 @@ var UsuarioSchema = new Schema({
 	apellidos: 		{type: String},
 	email: 			{type: String},
 	login: 			{type: String},
-	comentariosID:	[Number]
+	comentariosID:	[Number],
+	userID:			{type: Number}
 });
 
 module.exports = mongoose.model('Usuario', UsuarioSchema);

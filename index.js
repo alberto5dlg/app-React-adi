@@ -28,7 +28,9 @@ app.use('/api/noticias', noticia);
 
 //Ruta para mostrar la documentacion del API
 app.use('/api/documentation', express.static('documentation/api'));
-//Ruta Generica del Servidor
+//Ruta para la aplicacion Web en Handlebars
+app.use('/usuarios', express.static('web'));
+//Ruta Generica del Servidor para aplicacion React
 app.get('*', function(req, res){
     res.sendFile(path.join(__dirname, 'src/views/index.html'));
 });
