@@ -32,6 +32,7 @@ Este comando ejecutara un script para recompilar el archivo bundle.js que contie
 
 ## Componentes React
 
+El codigo desarrollado en para los componentes React se encuentra en la carpeta ***/src*** del proyecto.
 
 - **/login ->** Componente que comprueba el login y password del usuario y desbloquea las funcionalidades de añadir, borrar o editar noticias, como estamos en una fase de desarrollo solamente se ha implementado el siguiente usuario: 
 
@@ -48,7 +49,8 @@ Este comando ejecutara un script para recompilar el archivo bundle.js que contie
 - **/* ->** El resto de paginas que no son las nombradas anteriormente ni la de componente handlebar, cada vez que te metas te redireccionará a una de Error 404 Not Found.
 
 ## APIs nativo del navegador
-Para esta parte nos hemos apollado en el framework de templates de Handlebars. 
+
+Para esta parte nos hemos apollado en el framework de templates de Handlebars. El código desarrollado para esta parte se encuentra dentro de la carpeta ***/web*** del proyecto 
 
 - **/usuarios ->** Se muestra un listado de Usuarios desde el cual se pueden editar y borrar dichos usuarios.
 	
