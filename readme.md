@@ -30,9 +30,30 @@ Para que arranque el servidor node.js con el API Rest y los componentes React, y
 	
 Este comando ejecutara un script para recompilar el archivo bundle.js que contiene todo el codigo javascript traducido para que pueda ser procesador por el compilador del navegador. 
 
+## Componentes React
+
+
+- **/login ->** Componente que comprueba el login y password del usuario y desbloquea las funcionalidades de añadir, borrar o editar noticias, como estamos en una fase de desarrollo solamente se ha implementado el siguiente usuario: 
+
+	`Login: admin`
+	`Password: 123456`
+- **/noticias ->** Listado de todas las noticias dividida por paginacion como en el API, desde aqui estando registrado el usuario puede borrar o editar una noticia. Para ver el listado y los detalles de una noticia no es necesario estar registrado.
+
+- **/noticias/nueva ->** En esta pagina se podrá agregar una nueva noticia, solo es posible si el usuario esta registrado. 
+
+- **/noticias/:id ->** En esta se verán los detalles de una noticia seleccionada en el listado.
+
+- **/noticias/editar/:id ->** Desde aqui editaremos los detalles de una noticia es necesario estar registrado como admin para poder hacer esto. 
+
+- **/* ->** El resto de paginas que no son las nombradas anteriormente ni la de componente handlebar, cada vez que te metas te redireccionará a una de Error 404 Not Found.
+
+## APIs nativo del navegador
+Para esta parte nos hemos apollado en el framework de templates de Handlebars. 
+
+- **/usuarios ->** Se muestra un listado de Usuarios desde el cual se pueden editar y borrar dichos usuarios.
+	
+
 
 ## Requisitos "Adicionales" implementados
 
 - **Estilo visual de la Web:** Se ha implementado esta parte adicional de la practica con el framework CSS de Bootstrap, el cual se carga en el index.html al iniciar la Web. Se ha implementado este requisito para dotar al sitio de un aspecto mas amigable con el usuario. 
-
-- 
