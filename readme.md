@@ -1,4 +1,4 @@
-#App Web React, Practica 2 ADI 
+# App Web React, Practica 2 ADI 
 
 Este App Web esta diseñada para la segunda práctica de ADI(Aplicaciones Distribuidas en Internet) de la Universidad de Alicante en el Grado en Ingeniería Informática.
 
@@ -8,7 +8,7 @@ También se ha implementado una segunda parte con el framework de tamplates de H
 
 Todo el codigo esta alojado en GitHub en el siguiente repositorio: [App Web React] (https://github.com/alberto5dlg/ap-React-adi) 
 
-##Puesta en funcionamiento del servidor
+## Puesta en funcionamiento del servidor
 Para poner en funcionamiento el servidor, en primer lugar tendremos que descargar todas las dependencias del mismo para ello las descargaremos con el siguiente comando: 
 	
 	$ npm install
@@ -19,7 +19,7 @@ Una vez instaladas todas las dependencias, ejecutaremos el servidor mediante el 
 	
 Con esto tendríamos el servidor en marcha en [http://localhost:5000](http://localhost:5000), en este servidor estaría funcionando tanto el API Rest de la práctica 1 como la Aplicación Web Cliente que se requiere para esta práctica. 
 
-###Modo Desarrollo 
+### Modo Desarrollo 
 Si queremos desplegar el servidor en modo desarrollo para poder hacer cambios e ir observando sin tener que parar y arrancar el servidor tendremos que ejecutar los siguientes comandos: 
 
 	$ nodemon index.js 
